@@ -788,6 +788,101 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiPopularBrandPopularBrand extends Schema.CollectionType {
+  collectionName: 'popular_brands';
+  info: {
+    singularName: 'popular-brand';
+    pluralName: 'popular-brands';
+    displayName: 'Popular-Brand';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Brand: Attribute.String;
+    imgURL: Attribute.Text;
+    logoURL: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::popular-brand.popular-brand',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::popular-brand.popular-brand',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiShopTheWashShopTheWash extends Schema.CollectionType {
+  collectionName: 'shop_the_washes';
+  info: {
+    singularName: 'shop-the-wash';
+    pluralName: 'shop-the-washes';
+    displayName: 'Shop-the-wash';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    color: Attribute.String;
+    imgURL: Attribute.Text;
+    pageURL: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shop-the-wash.shop-the-wash',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::shop-the-wash.shop-the-wash',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWeHaveBeenFeaturedWeHaveBeenFeatured
+  extends Schema.CollectionType {
+  collectionName: 'we_have_been_featureds';
+  info: {
+    singularName: 'we-have-been-featured';
+    pluralName: 'we-have-been-featureds';
+    displayName: 'We-have-been-featured';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logoURL: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::we-have-been-featured.we-have-been-featured',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::we-have-been-featured.we-have-been-featured',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -806,6 +901,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::popular-brand.popular-brand': ApiPopularBrandPopularBrand;
+      'api::shop-the-wash.shop-the-wash': ApiShopTheWashShopTheWash;
+      'api::we-have-been-featured.we-have-been-featured': ApiWeHaveBeenFeaturedWeHaveBeenFeatured;
     }
   }
 }
